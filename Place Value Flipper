@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Place Value Flipper</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #1a1a1a;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    .value-box {
+      margin-top: 20px;
+      font-size: 1.5rem;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 10px;
+      background-color: #444;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #666;
+    }
+  </style>
+</head>
+<body>
+  <h1>Place Value Flipper</h1>
+  <button onclick="nextNumber()">Next Number</button>
+  <div class="value-box" id="output"></div>
+
+  <script>
+    let number = 0;
+
+    function displayPlaceValues(num) {
+      let str = num.toString().padStart(4, '0');
+      let [thousands, hundreds, tens, ones] = str.split('');
+      return `${str} → ${thousands} (Thousands) | ${hundreds} (Hundreds) | ${tens} (Tens) | ${ones} (Ones)`;
+    }
+
+    function nextNumber() {
+      if (number <= 1000) {
+        document.getElementById('output').innerText = displayPlaceValues(number);
+        number++;
+      } else {
+        document.getElementById('output').innerText = "Done!";
+      }
+    }
+  </script>
+</body>
+</html>
